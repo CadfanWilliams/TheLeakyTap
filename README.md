@@ -3,7 +3,7 @@
 
 ## Requirements
 
-The website needs to have two views: ADMIN and USER. 
+The website needs to have two roles: ADMIN and USER. 
 
 Users should be able to request bookings (CREATE), view their bookings (READ), edit their bookings (UPDATE), or cancel their bookings (DELETE). 
 
