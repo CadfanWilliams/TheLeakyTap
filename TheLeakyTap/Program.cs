@@ -6,7 +6,7 @@ var connectionString = builder.Configuration.GetConnectionString("AppDbContextCo
 
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlite(connectionString));
 
-builder.Services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<AppDbContext>();
+builder.Services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<AppDbContext>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

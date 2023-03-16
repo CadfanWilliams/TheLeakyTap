@@ -82,10 +82,9 @@ namespace TheLeakyTap.Areas.Identity.Pages.Account
             public string LastName { get; set; }
 
 
-            [Required]
-            [Display(Name = "TelephoneNumber")]
-        
-            public int TelNum { get; set; }
+            //[Required]
+            //[Display(Name = "TelephoneNumber")]
+            //public string TelNum { get; set; }
 
 
             /// <summary>
@@ -135,7 +134,7 @@ namespace TheLeakyTap.Areas.Identity.Pages.Account
 
                 user.firstName = Input.FirstName;
                 user.lastName = Input.LastName;
-                user.telNum = Input.TelNum;
+                //user.telNum = Input.TelNum;
 
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
