@@ -71,6 +71,23 @@ namespace TheLeakyTap.Areas.Identity.Pages.Account
         /// </summary>
         public class InputModel
         {
+            [Required]
+            [Display(Name = "FirstName")]
+            [StringLength(30, ErrorMessage = "The first name field should have a maximum of 30 characters")]
+            public string FirstName { get; set; }
+
+            [Required]
+            [Display(Name = "LastName")]
+            [StringLength(30, ErrorMessage = "The last name field should have a maximum of 30 characters")]
+            public string LastName { get; set; }
+
+
+            [Required]
+            [Display(Name = "TelephoneNumber")]
+        
+            public int TelNum { get; set; }
+
+
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
@@ -114,6 +131,12 @@ namespace TheLeakyTap.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = CreateUser();
+
+
+                user.firstName = Input.FirstName;
+                user.lastName = Input.LastName;
+                user.telNum = Input.TelNum;
+
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
