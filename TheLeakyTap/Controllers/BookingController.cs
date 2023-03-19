@@ -16,9 +16,14 @@ namespace TheLeakyTap.Controllers
         }
 
         // GET: /<controller>/
+        //Returns a ENUM of list for a table view of all bookings
+        //eventually we will only return bookings matching the account
+        //Index
+        [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            IEnumerable<Booking> bookingList = _db.Bookings.ToList();
+            return View(bookingList);
         }
     }
 }
