@@ -2,6 +2,11 @@
 using TheLeakyTap.Data;
 using TheLeakyTap.Models;
 
+using Microsoft.AspNetCore.Identity;
+using TheLeakyTap.Areas.Identity.Data;
+
+
+
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace TheLeakyTap.Controllers
@@ -21,9 +26,9 @@ namespace TheLeakyTap.Controllers
         //Index
         [HttpGet]
         public IActionResult Index()
-        {
-            IEnumerable<Booking> bookingList = _db.Bookings.ToList();
-            return View(bookingList);
+        { 
+                IEnumerable<Booking> bookingList = _db.Bookings.ToList();
+                return View(bookingList);
         }
 
         #region Create
