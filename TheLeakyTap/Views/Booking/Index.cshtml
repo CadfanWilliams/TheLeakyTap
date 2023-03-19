@@ -1,44 +1,52 @@
 ﻿@model IEnumerable<Booking>
 
 
-<div>
-    <h1>Your Bookings</h1>
-</div>
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Bookings</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Booking" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-circle-dotted"></i> &nbsp; Request Booking
+            </a>
+        </div>
+    </div>
 
-<table class="table table-bordered table-striped mt-3" width="100%">
-    <thead>
-        <tr>
-            <th>BookingID</th>
-            <th>Full Name</th>
-            <th>Booking Date</th>
-            <th>Number of people</th>
-            <th>Booking Type</th>
-            <th>Booking Notes</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var booking in Model)
-        {
+    <table class="table table-bordered table-striped mt-3" width="100%">
+        <thead>
             <tr>
-                <td>@booking.bookingID</td>
-                <td>@booking.bookingName</td>
-                <td>@booking.bookingDate</td>
-                <td>@booking.bookingGuests</td>
-                <td>@booking.bookingType</td>
-                <td>@booking.bookingNotes</td>
-                <td>
-                    <div class="w-45 btn-group" role="group">
-                        <a asp-controller="Booking" asp-action="Update" asp-route-id="@booking.bookingID" class="btn btn-primary mx-2">
-                            <i class="bi bi-pencil"></i>  Update
-                        </a>
-                    </div>
-                    <div class="w-45 btn-group" role="group">
-                        <a asp-controller="Booking" asp-action="Delete" asp-route-id="@booking.bookingID" class="btn btn-danger mx-2">
-                            <i class="bi bi-trash3-fill"></i> Delete
-                        </a>
-                    </div>
-                </td>
+                <th>BookingID</th>
+                <th>Full Name</th>
+                <th>Booking Date</th>
+                <th>Number of people</th>
+                <th>Booking Type</th>
+                <th>Booking Notes</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var booking in Model)
+            {
+                <tr>
+                    <td>@booking.bookingID</td>
+                    <td>@booking.bookingName</td>
+                    <td>@booking.bookingDate</td>
+                    <td>@booking.bookingGuests</td>
+                    <td>@booking.bookingType</td>
+                    <td>@booking.bookingNotes</td>
+                    <td>
+                        <div class="w-45 btn-group" role="group">
+                            <a asp-controller="Booking" asp-action="Update" asp-route-id="@booking.bookingID" class="btn btn-primary mx-2">
+                                <i class="bi bi-pencil"></i>  Update
+                            </a>
+                        </div>
+                        <div class="w-45 btn-group" role="group">
+                            <a asp-controller="Booking" asp-action="Delete" asp-route-id="@booking.bookingID" class="btn btn-danger mx-2">
+                                <i class="bi bi-trash3-fill"></i> Delete
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>

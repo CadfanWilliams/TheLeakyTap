@@ -25,6 +25,87 @@ namespace TheLeakyTap.Controllers
             IEnumerable<Booking> bookingList = _db.Bookings.ToList();
             return View(bookingList);
         }
+
+        #region Create
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Booking obj)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Add(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(obj);
+        }
+        #endregion
+
+        #region Update
+        [HttpGet]
+        public IActionResult Update(int? id)
+        {
+            if (id != null || id != 0)
+            {
+                var bookingFromId = _db.Bookings.Find(id);
+                if (bookingFromId != null)
+                {
+                    return View(bookingFromId);
+
+                }
+            }
+            return NotFound();
+        }
+
+        [HttpPost]
+        public IActionResult Update(Booking obj)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Update(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return NotFound();
+        }
+        #endregion
+
+        #region Delete
+
+        [HttpGet]
+        public IActionResult Delete(int? id)
+        {
+            if (id != 0 || id != null)
+            {
+                var obj = _db.Bookings.Find(id);
+                if (obj != null)
+                {
+                    return View(obj);
+                }
+            }
+            return NotFound();
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Booking obj)
+        {
+            if (obj != null)
+            {
+                _db.Bookings.Remove(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return NotFound();
+        }
+        #endregion
     }
 }
+
+
+    
 
