@@ -8,9 +8,9 @@ namespace TheLeakyTap.Controllers
 {
     public class BookingController : Controller
     {
-        private readonly AppDbContext _db;
+        private readonly ApplicationDbContext _db;
 
-        public BookingController(AppDbContext db)
+        public BookingController(ApplicationDbContext db)
         {
             _db = db;
         }
