@@ -1,0 +1,46 @@
+﻿@model Booking
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Update Booking</h2>
+            <hr />
+        </div>
+        <!-- ><div asp-validation-summary="All" class="text-danger"></div> -->
+        <div class="mb-3">
+            <label asp-for="bookingID"></label>
+            <input asp-for="bookingID" class="form-control" readonly />
+            <span asp-validation-for="bookingID" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="bookingName"></label>
+            <input asp-for="bookingName" class="form-control" />
+            <span asp-validation-for="bookingName" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="bookingDate"></label>
+            <input asp-for="bookingDate" class="form-control" />
+            <span asp-validation-for="bookingDate" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="bookingGuests"></label>
+            <input asp-for="bookingGuests" class="form-control" />
+            <span asp-validation-for="bookingGuests" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="bookingType"></label>
+            <input asp-for="bookingType" class="form-control" />
+            <span asp-validation-for="bookingType" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="bookingNotes"></label>
+            <input asp-for="bookingNotes" class="form-control" />
+            <span asp-validation-for="bookingNotes" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Update</button>
+        <a asp-controller="Booking" asp-action="" class="btn btn-primary" style="width:250px">Back to Bookings</a>
+    </div>
+
+</form>
+
+
