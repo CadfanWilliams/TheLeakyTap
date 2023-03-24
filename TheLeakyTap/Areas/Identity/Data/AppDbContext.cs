@@ -29,6 +29,6 @@ public class ApplicationUserEntityConfiguration : IEntityTypeConfiguration<AppUs
     {
         builder.Property(u => u.firstName).HasMaxLength(100);
         builder.Property(u => u.lastName).HasMaxLength(100);
-        builder.Property(u => u.telNum).HasMaxLength(20);
+
     }
 }

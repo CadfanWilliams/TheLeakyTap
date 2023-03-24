@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TheLeakyTap.Data;
 using TheLeakyTap.Models;
-
 using Microsoft.AspNetCore.Identity;
 using TheLeakyTap.Areas.Identity.Data;
+using System.Security.Claims;
 
 
 
@@ -14,12 +14,14 @@ namespace TheLeakyTap.Controllers
     public class BookingController : Controller
     {
         private readonly ApplicationDbContext _db;
-
+        
         public BookingController(ApplicationDbContext db)
         {
             _db = db;
         }
 
+        public SignInManager<AppUser> SignInManager;
+        public UserManager<AppUser> UserManager;
         // GET: /<controller>/
         //Returns a ENUM of list for a table view of all bookings
         //eventually we will only return bookings matching the account
@@ -39,10 +41,12 @@ namespace TheLeakyTap.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Booking obj)
+        public IActionResult  Create(Booking obj)
         {
+         
             if (ModelState.IsValid)
             {
+        
                 _db.Add(obj);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
