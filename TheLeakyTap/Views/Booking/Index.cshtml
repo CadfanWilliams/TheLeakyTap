@@ -30,10 +30,7 @@
         </thead>
         <tbody>
             @foreach (var booking in Model)
-            {
-                @if (UserManager.GetUserName(User) == "cadfanw@gmail.com")
-                {
-
+             {
                     <tr>
                         <td>@booking.bookingID</td>
                         <td>@booking.bookingName</td>
@@ -54,9 +51,6 @@
                             </div>
                         </td>
                     </tr>
-               }
-
-
-            }
+             }
         </tbody>
     </table>
