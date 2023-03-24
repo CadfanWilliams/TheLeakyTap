@@ -1,17 +1,16 @@
-﻿using System;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel;
 namespace TheLeakyTap.Models
 {
-	public class Booking
-	{
-		public Booking()
-		{
-		}
+    public class Booking
+    {
+        public Booking()
+        {
+        }
 
-		[Required]
-		[DisplayName("Booking Reference")]
-		public int bookingID { get; set; }
+        [Required]
+        [DisplayName("Booking Reference")]
+        public int bookingID { get; set; }
         [Required]
         [DisplayName("Name")]
         public string bookingName { get; set; }
@@ -21,7 +20,7 @@ namespace TheLeakyTap.Models
         [Required]
         [DisplayName("Booking Date and Time")]
         public DateTime bookingDate { get; set; }
-		[Required]
+        [Required]
         [DisplayName("Number of Guests")]
         public int bookingGuests { get; set; }
         [DisplayName("Booking Notes")]

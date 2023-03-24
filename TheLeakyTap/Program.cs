@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using TheLeakyTap.Areas.Identity.Data;
 using TheLeakyTap.Data;
@@ -25,7 +24,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-app.MapRazorPages(); 
+app.MapRazorPages();
 app.UseRouting();
 
 app.UseAuthorization();
