@@ -26,6 +26,8 @@ namespace TheLeakyTap.Models
         [DisplayName("Booking Notes")]
         public string bookingNotes { get; set; }
 
+        public string userId { get; set; } = string.Empty;
+
     }
 }
 

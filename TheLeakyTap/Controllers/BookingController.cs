@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using System.Security.Claims;
+using System.Security.Principal;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using TheLeakyTap.Areas.Identity.Data;
 using TheLeakyTap.Data;
 using TheLeakyTap.Models;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 
 
@@ -13,14 +16,18 @@ namespace TheLeakyTap.Controllers
     public class BookingController : Controller
     {
         private readonly ApplicationDbContext _db;
-
-        public BookingController(ApplicationDbContext db)
+        private readonly UserManager<AppUser> _userManager;
+        public string UserID;
+  
+        public BookingController(ApplicationDbContext db, UserManager<AppUser> userManager)
         {
             _db = db;
+            _userManager = userManager;
+            
+
         }
 
-        public SignInManager<AppUser> SignInManager;
-        public UserManager<AppUser> UserManager;
+        
         // GET: /<controller>/
         //Returns a ENUM of list for a table view of all bookings
         //eventually we will only return bookings matching the account
@@ -28,8 +35,10 @@ namespace TheLeakyTap.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+            var UserID = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             IEnumerable<Booking> bookingList = _db.Bookings.ToList();
-            return View(bookingList);
+            IEnumerable<Booking> query = bookingList.Where(bookingList => bookingList.userId == UserID);
+            return View(query);
         }
 
         #region Create
@@ -43,9 +52,12 @@ namespace TheLeakyTap.Controllers
         public IActionResult Create(Booking obj)
         {
 
+            var UserID = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            obj.userId = UserID.ToString();
             if (ModelState.IsValid)
             {
-
+                
+                
                 _db.Add(obj);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
